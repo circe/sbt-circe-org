@@ -1,6 +1,12 @@
 lazy val `sbt-circe-io` =
   project.in(file(".")).enablePlugins(NoPublishPlugin).aggregate(core)
 
+lazy val docs = project
+  .enablePlugins(CirceIoSitePlugin)
+  .settings(
+    tlSiteRelatedProjects += "sbt-typelevel" -> url("https://typelevel.org/sbt-typelevel/")
+  )
+
 lazy val core = project
   .in(file("core"))
   .enablePlugins(SbtPlugin)
