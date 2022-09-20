@@ -43,7 +43,6 @@ object CirceIoPlugin extends AutoPlugin {
   lazy val githubActionsSettings: Seq[Setting[_]] = Seq(
     githubWorkflowJavaVersions := List("11", "17").map(JavaSpec.temurin(_)),
     tlCiScalafixCheck := false,
-    githubWorkflowBuildMatrixFailFast := Some(false),
     githubWorkflowAddedJobs ++= Seq(
       WorkflowJob(
         id = "scalafmt",
