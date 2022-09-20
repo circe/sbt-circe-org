@@ -88,7 +88,6 @@ object CirceIoPlugin extends AutoPlugin {
     Seq(
       scalafixScalaBinaryVersion := (LocalRootProject / scalaBinaryVersion).value,
       scalafixDependencies ++= Seq(
-        "org.typelevel" %% "typelevel-scalafix-cats" % "0.1.5", // https://github.com/typelevel/typelevel-scalafix/releases
         "com.github.liancheng" %% "organize-imports" % "0.6.0" // https://github.com/liancheng/scalafix-organize-imports/tags
       )
     )
