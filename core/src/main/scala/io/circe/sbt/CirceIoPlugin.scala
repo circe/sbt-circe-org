@@ -9,6 +9,7 @@ import sbt._
 import GenerativeKeys._
 import TypelevelCiPlugin.autoImport._
 import TypelevelSonatypePlugin.autoImport._
+import scalafix.sbt.ScalafixPlugin.autoImport._
 
 object CirceIoPlugin extends AutoPlugin {
   object autoImport
@@ -18,7 +19,7 @@ object CirceIoPlugin extends AutoPlugin {
   override def requires = TypelevelPlugin && ScoverageSbtPlugin
 
   override def buildSettings =
-    publishSettings ++ organizationSettings ++ githubActionsSettings
+    publishSettings ++ organizationSettings ++ scalafixSettings ++ githubActionsSettings
 
   override def projectSettings = Seq(
     // TODO: look over projects and see what's in common
@@ -32,12 +33,14 @@ object CirceIoPlugin extends AutoPlugin {
   lazy val organizationSettings: Seq[Setting[_]] =
     Seq(
       organization := "io.circe",
-      organizationName := "io.circe"
+      organizationName := "circe"
     )
 
+  @scala.annotation.nowarn
   lazy val githubActionsSettings: Seq[Setting[_]] = Seq(
     githubWorkflowJavaVersions := List("11", "17").map(JavaSpec.temurin(_)),
-    tlCiScalafixCheck := false,
+    tlCiScalafixCheck := true, // yolo, let's see how it works on scala 3 :D
+    tlCiScalafmtCheck := true,
     githubWorkflowAddedJobs ++= Seq(
       WorkflowJob(
         id = "coverage",
@@ -62,5 +65,13 @@ object CirceIoPlugin extends AutoPlugin {
       )
     )
   )
+
+  lazy val scalafixSettings: Seq[Setting[_]] =
+    Seq(
+      scalafixScalaBinaryVersion := (LocalRootProject / scalaBinaryVersion).value,
+      scalafixDependencies ++= Seq(
+        "com.github.liancheng" %% "organize-imports" % "0.6.0" // https://github.com/liancheng/scalafix-organize-imports/tags
+      )
+    )
 
 }
