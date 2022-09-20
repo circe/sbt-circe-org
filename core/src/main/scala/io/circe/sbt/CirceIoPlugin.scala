@@ -15,7 +15,7 @@ object CirceIoPlugin extends AutoPlugin {
 
   override def trigger = allRequirements
 
-  override def requires = TypelevelCiPlugin && TypelevelSonatypePlugin && ScoverageSbtPlugin
+  override def requires = TypelevelPlugin && ScoverageSbtPlugin
 
   override def buildSettings =
     publishSettings ++ organizationSettings ++ githubActionsSettings
