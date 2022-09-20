@@ -1,2 +1,2 @@
-# sbt-circe-org
-An SBT plugin to support circe org projects
+# sbt-circe-io
+An SBT plugin to support `io.circe` projects
