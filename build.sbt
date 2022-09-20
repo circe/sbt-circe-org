@@ -1,7 +1,5 @@
-enablePlugins(TypelevelCiReleasePlugin)
-
-// Projects
-lazy val `sbt-circe-io` = project.in(file(".")).enablePlugins(NoPublishPlugin).aggregate(core)
+lazy val `sbt-circe-io` =
+  project.in(file(".")).enablePlugins(NoPublishPlugin).aggregate(core)
 
 lazy val core = project
   .in(file("core"))
@@ -13,6 +11,6 @@ lazy val core = project
 ThisBuild / tlBaseVersion := "0.1"
 ThisBuild / crossScalaVersions := Seq("2.12.17")
 ThisBuild / developers := List(
-tlGitHubDev("lorandszakacs", "Loránd Szakács")
+  tlGitHubDev("lorandszakacs", "Loránd Szakács")
 )
 ThisBuild / startYear := Some(2022)
