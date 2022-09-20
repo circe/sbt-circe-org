@@ -23,6 +23,7 @@ import sbt.Keys._
 import sbt._
 
 import GenerativeKeys._
+import TypelevelSettingsPlugin.autoImport._
 import TypelevelCiPlugin.autoImport._
 import TypelevelSonatypePlugin.autoImport._
 import scalafix.sbt.ScalafixPlugin.autoImport._
@@ -43,7 +44,8 @@ object CirceIoPlugin extends AutoPlugin {
 
   lazy val publishSettings: Seq[Setting[_]] =
     Seq(
-      tlSonatypeUseLegacyHost := true
+      tlSonatypeUseLegacyHost := true,
+      tlJdkRelease := Some(8)
     )
 
   lazy val organizationSettings: Seq[Setting[_]] =
@@ -87,7 +89,7 @@ object CirceIoPlugin extends AutoPlugin {
       scalafixScalaBinaryVersion := (LocalRootProject / scalaBinaryVersion).value,
       scalafixDependencies ++= Seq(
         "org.typelevel" %% "typelevel-scalafix-cats" % "0.1.5", // https://github.com/typelevel/typelevel-scalafix/releases
-        "com.github.liancheng" %% "organize-imports" % "0.6.0", // https://github.com/liancheng/scalafix-organize-imports/tags
+        "com.github.liancheng" %% "organize-imports" % "0.6.0" // https://github.com/liancheng/scalafix-organize-imports/tags
       )
     )
 
