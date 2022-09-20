@@ -13,6 +13,6 @@ lazy val core = project
 ThisBuild / tlBaseVersion := "0.1"
 ThisBuild / crossScalaVersions := Seq("2.12.17")
 ThisBuild / developers := List(
-//TODO:
+tlGitHubDev("lorandszakacs", "Loránd Szakács")
 )
 ThisBuild / startYear := Some(2022)
