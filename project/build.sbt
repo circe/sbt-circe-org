@@ -1,1 +1,1 @@
-core/build.sbt
+../core/build.sbt
