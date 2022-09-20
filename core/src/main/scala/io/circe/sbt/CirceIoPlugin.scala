@@ -54,7 +54,7 @@ object CirceIoPlugin extends AutoPlugin {
       organizationName := "circe"
     )
 
-  @scala.annotation.nowarn
+  @scala.annotation.nowarn("msg=possible missing interpolator")
   lazy val githubActionsSettings: Seq[Setting[_]] = Seq(
     githubWorkflowJavaVersions := List("11", "17").map(JavaSpec.temurin(_)),
     tlCiScalafixCheck := true, // yolo, let's see how it works on scala 3 :D
