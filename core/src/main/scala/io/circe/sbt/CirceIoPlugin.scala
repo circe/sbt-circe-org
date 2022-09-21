@@ -29,7 +29,13 @@ import TypelevelSonatypePlugin.autoImport._
 import scalafix.sbt.ScalafixPlugin.autoImport._
 
 object CirceIoPlugin extends AutoPlugin {
-  object autoImport
+  object autoImport {
+    lazy val circeRootOfCodeCoverage = settingKey[Option[String]](
+      "None if code coverage is disabled. Defined with name of the root project from which to run code coverage."
+    )
+  }
+
+  import autoImport._
 
   override def trigger = allRequirements
 
@@ -66,20 +72,25 @@ object CirceIoPlugin extends AutoPlugin {
         scalas = crossScalaVersions.value.filterNot(_.startsWith("3.")).toList,
         steps = List(WorkflowStep.Checkout) ++ WorkflowStep.SetupJava(
           List(githubWorkflowJavaVersions.value.last)
-        ) ++ githubWorkflowGeneratedCacheSteps.value ++ List(
-          // TODO: read rootJVM from a property. TODO: see how those are defined
-          WorkflowStep.Sbt(List("coverage", "rootJVM/test", "coverageAggregate")),
-          WorkflowStep.Use(
-            UseRef.Public(
-              "codecov",
-              "codecov-action",
-              "v2"
-            ),
-            params = Map(
-              "flags" -> List("${{matrix.scala}}", "${{matrix.java}}").mkString(",")
-            )
-          )
-        )
+        ) ++ githubWorkflowGeneratedCacheSteps.value ++
+          (circeRootOfCodeCoverage.value match {
+            case None => List.empty
+            case Some(rootProj) =>
+              List(
+                // TODO: read rootJVM from a property. TODO: see how those are defined
+                WorkflowStep.Sbt(List("coverage", s"$rootProj/test", "coverageAggregate")),
+                WorkflowStep.Use(
+                  UseRef.Public(
+                    "codecov",
+                    "codecov-action",
+                    "v2"
+                  ),
+                  params = Map(
+                    "flags" -> List("${{matrix.scala}}", "${{matrix.java}}").mkString(",")
+                  )
+                )
+              )
+          })
       )
     )
   )

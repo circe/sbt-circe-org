@@ -1,6 +1,9 @@
 lazy val `sbt-circe-io` =
   project.in(file(".")).enablePlugins(NoPublishPlugin).aggregate(core)
 
+// we're not doing code coverage on this plugin. Set to Some("sbt-circe-io") if you wish to run it.
+ThisBuild / circeRootOfCodeCoverage := None
+
 lazy val docs = project
   .in(file("site"))
   .enablePlugins(CirceIoSitePlugin)
