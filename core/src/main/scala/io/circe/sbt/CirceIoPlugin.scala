@@ -77,7 +77,6 @@ object CirceIoPlugin extends AutoPlugin {
             case None => List.empty
             case Some(rootProj) =>
               List(
-                // TODO: read rootJVM from a property. TODO: see how those are defined
                 WorkflowStep.Sbt(List("coverage", s"$rootProj/test", "coverageAggregate")),
                 WorkflowStep.Use(
                   UseRef.Public(

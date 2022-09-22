@@ -3,7 +3,7 @@ lazy val `sbt-circe-io` =
 
 // we're not doing code coverage on this plugin. Set to Some("sbt-circe-io") if you wish to run it.
 ThisBuild / circeRootOfCodeCoverage := None
-ThisBuild / tlCiScalafixCheck := false // we have no scalafix for the plugin
+ThisBuild / tlCiScalafixCheck := true
 
 lazy val docs = project
   .in(file("site"))
