@@ -65,18 +65,18 @@ object CirceIoPlugin extends AutoPlugin {
     githubWorkflowJavaVersions := List("11", "17").map(JavaSpec.temurin(_)),
     tlCiScalafixCheck := true, // yolo, let's see how it works on scala 3 :D
     tlCiScalafmtCheck := true,
-    githubWorkflowAddedJobs ++= Seq(
-      WorkflowJob(
-        id = "coverage",
-        name = "Generate coverage report",
-        scalas = crossScalaVersions.value.filterNot(_.startsWith("3.")).toList,
-        steps = List(WorkflowStep.Checkout) ++ WorkflowStep.SetupJava(
-          List(githubWorkflowJavaVersions.value.last)
-        ) ++ githubWorkflowGeneratedCacheSteps.value ++
-          (circeRootOfCodeCoverage.value match {
-            case None => List.empty
-            case Some(rootProj) =>
-              List(
+    githubWorkflowAddedJobs ++=
+      (circeRootOfCodeCoverage.value match {
+        case None => List.empty
+        case Some(rootProj) =>
+          List(
+            WorkflowJob(
+              id = "coverage",
+              name = "Generate coverage report",
+              scalas = crossScalaVersions.value.filterNot(_.startsWith("3.")).toList,
+              steps = List(WorkflowStep.Checkout) ++ WorkflowStep.SetupJava(
+                List(githubWorkflowJavaVersions.value.last)
+              ) ++ githubWorkflowGeneratedCacheSteps.value ++ List(
                 WorkflowStep.Sbt(List("coverage", s"$rootProj/test", "coverageAggregate")),
                 WorkflowStep.Use(
                   UseRef.Public(
@@ -89,9 +89,9 @@ object CirceIoPlugin extends AutoPlugin {
                   )
                 )
               )
-          })
-      )
-    )
+            )
+          )
+      })
   )
 
   lazy val scalafixSettings: Seq[Setting[_]] =
