@@ -89,9 +89,11 @@ object CirceIoSitePlugin extends AutoPlugin {
           anchorPlacement = laika.helium.config.AnchorPlacement.Right
         )
         .site
-        /** See scaladoc on [[laika.helium.config.CommonConfigOps#themeColors()]] */
+        /* See scaladoc on laika.helium.config.CommonConfigOps#themeColors()
+         * old circe website color theme reference point:
+         * https://github.com/circe/circe/blob/c666f32f3bd02644a927b624f7534fdeccbd62a6/build.sbt#L151
+         */
         .themeColors(
-          // copy and adapt from old circe microsite pallete https://github.com/circe/circe/blob/series/0.14.x/build.sbt#L151
           primary = Color.hex("222749"),
           secondary = Color.hex("222749"),
           primaryMedium = Color.hex("292E53"),
