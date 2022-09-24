@@ -20,13 +20,14 @@ import org.typelevel.sbt._
 import org.typelevel.sbt.gha._
 import sbt.Keys._
 import sbt._
-import scalafix.sbt.ScalafixPlugin.autoImport._
 import scoverage._
 
 import GenerativeKeys._
 import TypelevelSettingsPlugin.autoImport._
 import TypelevelCiPlugin.autoImport._
 import TypelevelSonatypePlugin.autoImport._
+import scoverage.ScoverageSbtPlugin.autoImport._
+import scalafix.sbt.ScalafixPlugin.autoImport._
 
 object CirceIoPlugin extends AutoPlugin {
   object autoImport {
@@ -39,9 +40,9 @@ object CirceIoPlugin extends AutoPlugin {
 
   override def trigger = allRequirements
 
-  override def requires = TypelevelPlugin && ScoverageSbtPlugin
+  override def requires: Plugins = TypelevelPlugin && ScoverageSbtPlugin
 
-  override def buildSettings =
+  override def buildSettings: Seq[Setting[_]] =
     publishSettings ++ organizationSettings ++ scalafixSettings ++ githubActionsSettings
 
   override def projectSettings = Seq(
@@ -65,6 +66,7 @@ object CirceIoPlugin extends AutoPlugin {
     githubWorkflowJavaVersions := List("11", "17").map(JavaSpec.temurin(_)),
     tlCiScalafixCheck := true, // yolo, let's see how it works on scala 3 :D
     tlCiScalafmtCheck := true,
+    coverageExcludedPackages := "io.circe.examples.*",
     githubWorkflowAddedJobs ++=
       (circeRootOfCodeCoverage.value match {
         case None => List.empty

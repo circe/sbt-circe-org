@@ -23,6 +23,7 @@ Triggers automatically. Use on all published `circe` modules.
 * Enables automated license headers with appropriate years
 * Enables [sbt-github-actions](https://github.com/djspiewak/sbt-github-actions) with settings appropriate to our
   workflow
+* by default does not run code coverage in all `io.circe.examples.*` packages
 
 ### `CirceIoSitePlugin`
 
