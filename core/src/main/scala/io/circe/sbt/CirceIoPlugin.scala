@@ -46,7 +46,8 @@ object CirceIoPlugin extends AutoPlugin {
     publishSettings ++ organizationSettings ++ scalafixSettings ++ githubActionsSettings
 
   override def projectSettings = Seq(
-    // TODO: look over projects and see what's in common
+    coverageHighlighting := true,
+    coverageExcludedPackages := "io.circe.examples.*"
   )
 
   lazy val publishSettings: Seq[Setting[_]] =
@@ -66,7 +67,6 @@ object CirceIoPlugin extends AutoPlugin {
     githubWorkflowJavaVersions := List("11", "17").map(JavaSpec.temurin(_)),
     tlCiScalafixCheck := true, // yolo, let's see how it works on scala 3 :D
     tlCiScalafmtCheck := true,
-    coverageExcludedPackages := "io.circe.examples.*",
     githubWorkflowAddedJobs ++=
       (circeRootOfCodeCoverage.value match {
         case None => List.empty
