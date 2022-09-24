@@ -77,7 +77,7 @@ object CirceIoSitePlugin extends AutoPlugin {
           title = tlGitHubRepo.value,
           authors = developers.value.map(_.name),
           language = Some("en"),
-          version = Some(version.value.toString)
+          version = Some(version.value)
         )
         .site
         .layout(
@@ -89,19 +89,19 @@ object CirceIoSitePlugin extends AutoPlugin {
           anchorPlacement = laika.helium.config.AnchorPlacement.Right
         )
         .site
+        /** See scaladoc on [[laika.helium.config.CommonConfigOps#themeColors()]] */
         .themeColors(
-          // copy and adapt from the circe microsite pallete https://github.com/circe/circe/blob/series/0.14.x/build.sbt#L151
-          primary = Color.hex("5B5988"),
-          secondary = Color.hex("292E53"),
-          primaryMedium = Color.hex("5B5988"), // TODO
-          primaryLight = Color.hex("5B5988"), // TODO
-          text = Color.hex("5f5f5f"), // TODO
-          background = Color.hex("ffffff"), // TODO
-          bgGradient = (Color.hex("334044"), Color.hex("5B7980")) // TODO: only used for landing page background
+          // copy and adapt from old circe microsite pallete https://github.com/circe/circe/blob/series/0.14.x/build.sbt#L151
+          primary = Color.hex("222749"),
+          secondary = Color.hex("222749"),
+          primaryMedium = Color.hex("292E53"),
+          primaryLight = Color.hex("5B5988"),
+          text = Color.hex("5f5f5f"),
+          background = Color.hex("F4F3F4"),
+          bgGradient = (Color.hex("F4F3F4"), Color.hex("E5E5E6"))
         )
         .site
         .favIcons(
-          Favicon.internal(Root / "images" / "circe_navbar-brand.svg", "32x32").copy(sizes = None),
           Favicon.internal(Root / "images" / "navbar_brand.png", "32x32")
         )
         .site
@@ -111,7 +111,11 @@ object CirceIoSitePlugin extends AutoPlugin {
         .topNavigationBar(
           homeLink = ImageLink.external(
             "https://github.com/circe/circe",
-            Image.internal(Root / "images" / "circe_navbar-brand.svg")
+            Image.internal(
+              Root / "images" / "navbar_brand.png",
+              width = Length(32, LengthUnit.px).some,
+              height = Length(32, LengthUnit.px).some
+            )
           ),
           navLinks = tlSiteApiUrl.value.toList.map { url =>
             IconLink.external(
