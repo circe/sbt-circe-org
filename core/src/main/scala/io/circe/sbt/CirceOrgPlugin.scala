@@ -29,7 +29,7 @@ import TypelevelSettingsPlugin.autoImport._
 import TypelevelCiPlugin.autoImport._
 import TypelevelSonatypePlugin.autoImport._
 
-object CirceIoPlugin extends AutoPlugin {
+object CirceOrgPlugin extends AutoPlugin {
   object autoImport {
     lazy val circeRootOfCodeCoverage = settingKey[Option[String]](
       "None if code coverage is disabled. Defined with name of the root project from which to run code coverage."

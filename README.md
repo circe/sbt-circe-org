@@ -1,7 +1,7 @@
 # sbt-circe-io
 
-This project is intended to set up sensible defaults and standards for projects under `circe.io`. If it's useful
-outside `circe.io`, it probably should be pushed further upstream
+This project is intended to set up sensible defaults and standards for projects under `io.circe`. If it's useful
+outside `io.circe`, it probably should be pushed further upstream
 into [sbt-typelevel](https://github.com/typelevel/sbt-typelevel).
 
 ## Installing it
@@ -9,12 +9,12 @@ into [sbt-typelevel](https://github.com/typelevel/sbt-typelevel).
 The plugin is deployed to Sonatype.
 
 ```scala
-addSbtPlugin("io.circe" % "sbt-circe-io" % "@VERSION@")
+addSbtPlugin("io.circe" % "sbt-circe-org" % "@VERSION@")
 ```
 
 ## What does it do?
 
-### `CirceIoPlugin`
+### `CirceOrgPlugin`
 
 Triggers automatically. Use on all published `circe` modules.
 
@@ -25,7 +25,7 @@ Triggers automatically. Use on all published `circe` modules.
   workflow
 * by default does not run code coverage in all `io.circe.examples.*` packages
 
-### `CirceIoSitePlugin`
+### `CirceOrgSitePlugin`
 
 Must be manually triggered. Extends the `TypelevelSitePlugin` with the `circe.io` theme. See
 the [sbt-typelevel-site docs](https://typelevel.org/sbt-typelevel/site.html) for usage.

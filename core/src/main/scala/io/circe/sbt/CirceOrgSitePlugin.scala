@@ -31,7 +31,7 @@ import org.typelevel.sbt.TypelevelSitePlugin
 import sbt.Keys._
 import sbt._
 
-object CirceIoSitePlugin extends AutoPlugin {
+object CirceOrgSitePlugin extends AutoPlugin {
 
   override def requires = TypelevelSitePlugin && LaikaPlugin
 
@@ -70,7 +70,7 @@ object CirceIoSitePlugin extends AutoPlugin {
           tlGitHubRepo.value.contains(repo) // omit ourselves!
       }
     },
-    laikaTheme ~= { _.extend(site.CirceIoHeliumExtensions) },
+    laikaTheme ~= { _.extend(site.CirceOrgHeliumExtensions) },
     tlSiteHeliumConfig := {
       Helium.defaults.all
         .metadata(

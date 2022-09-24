@@ -24,11 +24,11 @@ import org.scalajs.sbtplugin.ScalaJSPlugin
 import sbt.*
 import scoverage.ScoverageSbtPlugin.autoImport._
 
-object CirceIoScalaJSPlugin extends AutoPlugin {
+object CirceOrgScalaJSPlugin extends AutoPlugin {
 
   override def trigger = allRequirements
 
-  override def requires: Plugins = CirceIoPlugin && ScalaJSPlugin
+  override def requires: Plugins = CirceOrgPlugin && ScalaJSPlugin
 
   override def projectSettings: Seq[Setting[_]] = Seq(
     coverageEnabled := false
