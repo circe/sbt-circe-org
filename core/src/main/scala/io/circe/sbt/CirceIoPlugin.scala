@@ -20,14 +20,14 @@ import org.typelevel.sbt._
 import org.typelevel.sbt.gha._
 import sbt.Keys._
 import sbt._
+import scalafix.sbt.ScalafixPlugin.autoImport._
+import scoverage.ScoverageSbtPlugin.autoImport._
 import scoverage._
 
 import GenerativeKeys._
 import TypelevelSettingsPlugin.autoImport._
 import TypelevelCiPlugin.autoImport._
 import TypelevelSonatypePlugin.autoImport._
-import scoverage.ScoverageSbtPlugin.autoImport._
-import scalafix.sbt.ScalafixPlugin.autoImport._
 
 object CirceIoPlugin extends AutoPlugin {
   object autoImport {
