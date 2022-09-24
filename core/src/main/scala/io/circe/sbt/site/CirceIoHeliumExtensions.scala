@@ -37,44 +37,20 @@ object CirceIoHeliumExtensions extends ThemeProvider {
       )
       .addInputs(
         InputTree[F].addStream(
-          F.blocking(getClass.getResourceAsStream("images/circe_alt.svg")),
-          Path.Root / "images" / "circe_alt.svg"
+          F.blocking(getClass.getResourceAsStream("images/circe_dark.svg")),
+          Path.Root / "images" / "circe_dark.svg"
         )
       )
       .addInputs(
         InputTree[F].addStream(
-          F.blocking(getClass.getResourceAsStream("images/circe_navbar_brand.svg")),
-          Path.Root / "images" / "circe_navbar_brand.svg"
+          F.blocking(getClass.getResourceAsStream("images/circe_light_no_border.svg")),
+          Path.Root / "images" / "circe_light_no_border.svg"
         )
       )
       .addInputs(
         InputTree[F].addStream(
-          F.blocking(getClass.getResourceAsStream("images/circe.svg")),
-          Path.Root / "images" / "circe.svg"
-        )
-      )
-      .addInputs(
-        InputTree[F].addStream(
-          F.blocking(getClass.getResourceAsStream("images/navbar_brand.png")),
-          Path.Root / "images" / "navbar_brand.png"
-        )
-      )
-      .addInputs(
-        InputTree[F].addStream(
-          F.blocking(getClass.getResourceAsStream("images/navbar_brand2x.png")),
-          Path.Root / "images" / "navbar_brand2x.png"
-        )
-      )
-      .addInputs(
-        InputTree[F].addStream(
-          F.blocking(getClass.getResourceAsStream("images/sidebar_brand.png")),
-          Path.Root / "images" / "sidebar_brand.png"
-        )
-      )
-      .addInputs(
-        InputTree[F].addStream(
-          F.blocking(getClass.getResourceAsStream("images/sidebar_brand2x.png")),
-          Path.Root / "images" / "sidebar_brand2x.png"
+          F.blocking(getClass.getResourceAsStream("images/circe_light_no_border_146x173.png")),
+          Path.Root / "images" / "circe_light_no_border_146x173.png"
         )
       )
       .build

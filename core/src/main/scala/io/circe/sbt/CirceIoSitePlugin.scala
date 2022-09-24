@@ -102,7 +102,7 @@ object CirceIoSitePlugin extends AutoPlugin {
         )
         .site
         .favIcons(
-          Favicon.internal(Root / "images" / "navbar_brand.png", "32x32")
+          Favicon.internal(Root / "images" / "circe_light_no_border_146x173.png", "32x32")
         )
         .site
         .darkMode
@@ -112,7 +112,7 @@ object CirceIoSitePlugin extends AutoPlugin {
           homeLink = ImageLink.external(
             "https://github.com/circe/circe",
             Image.internal(
-              Root / "images" / "navbar_brand.png",
+              Root / "images" / "circe_light_no_border_146x173.png",
               width = Length(32, LengthUnit.px).some,
               height = Length(32, LengthUnit.px).some
             )
