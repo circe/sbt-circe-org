@@ -111,11 +111,7 @@ object CirceIoSitePlugin extends AutoPlugin {
         .topNavigationBar(
           homeLink = ImageLink.external(
             "https://github.com/circe/circe",
-            Image.internal(
-              Root / "images" / "circe_light_no_border_146x173.png",
-              width = Length(32, LengthUnit.px).some,
-              height = Length(32, LengthUnit.px).some
-            )
+            Image.internal(Root / "images" / "circe_light_no_border_146x173.png")
           ),
           navLinks = tlSiteApiUrl.value.toList.map { url =>
             IconLink.external(

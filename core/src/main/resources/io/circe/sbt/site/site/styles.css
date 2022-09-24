@@ -1,19 +1,5 @@
-/* the css from https://github.com/circe/circe/blob/series/0.14.x/docs/src/main/resources/microsite/css/override.css 
-  Need to see exactly how useful it is
-*/
-/* .technologies {
-    display: none;
+header img {
+  height: 28px;
+  width: auto;
+  margin-top: 6px;
 }
-
-.jumbotron {
-    background-image: none;
-}
-
-.sidebar-nav>.sidebar-brand a .brand-wrapper {
-    background-size: 36px 36px !important;
-}
-
-#site-header .navbar-wrapper .brand .icon-wrapper {
-    width: 36px;
-    background-size: 100%;
-} */
