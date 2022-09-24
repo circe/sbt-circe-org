@@ -26,7 +26,6 @@ import laika.theme.ThemeProvider
 
 object CirceOrgHeliumExtensions extends ThemeProvider {
 
-  // TODO: rename images, currently copied from https://github.com/circe/circe/tree/series/0.14.x/docs/src/main/resources/microsite/img
   override def build[F[_]](implicit F: Sync[F]): Resource[F, Theme[F]] =
     ThemeBuilder[F]("Circe Helium Extensions")
       .addInputs(
