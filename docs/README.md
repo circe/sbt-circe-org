@@ -1,4 +1,4 @@
-# sbt-circe-io
+# sbt-circe-org
 
 This project is intended to set up sensible defaults and standards for projects under `io.circe`. If it's useful
 outside `io.circe`, it probably should be pushed further upstream
