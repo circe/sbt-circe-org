@@ -21,7 +21,7 @@ Triggers automatically. Use on all published `circe` modules.
 * Activates the sensible defaults of [sbt-typelevel](https://github.com/typelevel/sbt-typelevel/)
 * Sets the organization info
 * Enables automated license headers with appropriate years
-* Enables [sbt-github-actions](https://github.com/djspiewak/sbt-github-actions) with settings appropriate to our
+* Enables [sbt-github-actions](https://typelevel.org/sbt-typelevel/gha.html) with settings appropriate to our
   workflow
 * by default does not run code coverage in all `io.circe.examples.*` packages
 
