@@ -43,9 +43,11 @@ object CirceOrgPlugin extends AutoPlugin {
   override def requires: Plugins = TypelevelPlugin && ScoverageSbtPlugin
 
   override def buildSettings: Seq[Setting[_]] =
-    publishSettings ++ organizationSettings ++ scalafixSettings ++ githubActionsSettings
+    codeCoverageSettings ++ publishSettings ++ organizationSettings ++ scalafixSettings ++ githubActionsSettings
 
-  override def projectSettings = Seq(
+  override def projectSettings: Seq[Setting[_]] = Seq.empty
+
+  lazy val codeCoverageSettings: Seq[Setting[_]] = Seq(
     coverageHighlighting := true,
     coverageExcludedPackages := "io.circe.examples.*"
   )
