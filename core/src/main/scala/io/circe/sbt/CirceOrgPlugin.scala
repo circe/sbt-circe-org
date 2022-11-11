@@ -49,7 +49,8 @@ object CirceOrgPlugin extends AutoPlugin {
 
   lazy val codeCoverageSettings: Seq[Setting[_]] = Seq(
     coverageHighlighting := true,
-    coverageExcludedPackages := "io.circe.examples.*"
+    coverageExcludedPackages := "io.circe.examples.*",
+    circeRootOfCodeCoverage := None
   )
 
   lazy val publishSettings: Seq[Setting[_]] =
