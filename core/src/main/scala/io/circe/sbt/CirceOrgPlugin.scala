@@ -87,7 +87,7 @@ object CirceOrgPlugin extends AutoPlugin {
                   UseRef.Public(
                     "codecov",
                     "codecov-action",
-                    "v2"
+                    "v3"
                   ),
                   params = Map(
                     "flags" -> List("${{matrix.scala}}", "${{matrix.java}}").mkString(",")
