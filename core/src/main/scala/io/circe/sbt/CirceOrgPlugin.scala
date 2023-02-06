@@ -90,7 +90,7 @@ object CirceOrgPlugin extends AutoPlugin {
                     "v2"
                   ),
                   params = Map(
-                    "flags" -> List("${{matrix.scala}}", "${{matrix.java}}").mkString(",")
+                    "flags" -> List("${{matrix.scala}}").mkString(",")
                   )
                 )
               )
