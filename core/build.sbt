@@ -1,5 +1,5 @@
 val sbtTypelevelVersion = "0.4.21" // https://github.com/typelevel/sbt-typelevel/releases
-val sbtScoverageVersion = "2.0.7" // https://github.com/scoverage/sbt-scoverage/releases
+val sbtScoverageVersion = "2.0.8" // https://github.com/scoverage/sbt-scoverage/releases
 val sbtScalaNativeVersion = "0.4.12" // https://github.com/scala-native/scala-native/releases
 
 addSbtPlugin("org.typelevel" % "sbt-typelevel" % sbtTypelevelVersion)
