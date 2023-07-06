@@ -20,7 +20,7 @@ lazy val core = project
   )
 
 ThisBuild / tlBaseVersion := "0.1"
-ThisBuild / crossScalaVersions := Seq("2.12.17")
+ThisBuild / crossScalaVersions := Seq("2.12.18")
 ThisBuild / developers := List(
   tlGitHubDev("lorandszakacs", "Loránd Szakács")
 )
