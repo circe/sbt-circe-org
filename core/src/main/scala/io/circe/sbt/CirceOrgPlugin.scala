@@ -101,9 +101,7 @@ object CirceOrgPlugin extends AutoPlugin {
 
   lazy val scalafixSettings: Seq[Setting[_]] =
     Seq(
-      scalafixDependencies ++= Seq(
-        "com.github.liancheng" %% "organize-imports" % "0.6.0" // https://github.com/liancheng/scalafix-organize-imports/tags
-      )
+      scalafixDependencies ++= Seq.empty
     )
 
 }
