@@ -17,7 +17,7 @@
 package io.circe.sbt.site
 
 import cats.effect.Resource
-import cats.effect.kernel.Sync
+import cats.effect.kernel.Async
 import laika.ast.Path
 import laika.io.model.InputTree
 import laika.theme.Theme
@@ -26,32 +26,20 @@ import laika.theme.ThemeProvider
 
 object CirceOrgHeliumExtensions extends ThemeProvider {
 
-  override def build[F[_]](implicit F: Sync[F]): Resource[F, Theme[F]] =
-    ThemeBuilder[F]("Circe Helium Extensions")
-      .addInputs(
-        InputTree[F].addStream(
-          F.blocking(getClass.getResourceAsStream("site/styles.css")),
-          Path.Root / "site" / "styles.css"
-        )
-      )
-      .addInputs(
-        InputTree[F].addStream(
-          F.blocking(getClass.getResourceAsStream("images/circe_dark.svg")),
-          Path.Root / "images" / "circe_dark.svg"
-        )
-      )
-      .addInputs(
-        InputTree[F].addStream(
-          F.blocking(getClass.getResourceAsStream("images/circe_light_no_border.svg")),
-          Path.Root / "images" / "circe_light_no_border.svg"
-        )
-      )
-      .addInputs(
-        InputTree[F].addStream(
-          F.blocking(getClass.getResourceAsStream("images/circe_light_no_border_146x173.png")),
-          Path.Root / "images" / "circe_light_no_border_146x173.png"
-        )
-      )
-      .build
+  private val imageFileNames = Seq(
+    "circe_dark.svg",
+    "circe_light_no_border.svg",
+    "circe_light_no_border_146x173.png"
+  )
+
+  override def build[F[_]](implicit F: Async[F]): Resource[F, Theme[F]] = {
+
+    val inputs = imageFileNames.foldLeft(InputTree[F]) {
+      case (inputTree, fileName) =>
+        inputTree.addClassResource[this.type](s"images/$fileName", Path.Root / "images" / fileName)
+    }
+
+    ThemeBuilder[F]("http4s Images").addInputs(inputs).build
+  }
 
 }

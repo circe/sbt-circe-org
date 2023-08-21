@@ -16,6 +16,7 @@
 
 package io.circe.sbt
 
+import cats.data.NonEmptyList
 import laika.ast.LengthUnit._
 import laika.ast.Path.Root
 import laika.ast._
@@ -24,6 +25,8 @@ import laika.helium.config.Favicon
 import laika.helium.config.HeliumIcon
 import laika.helium.config.IconLink
 import laika.helium.config.ImageLink
+import laika.helium.config.TextLink
+import laika.helium.config.ThemeNavigationSection
 import laika.sbt.LaikaPlugin
 import laika.theme.config.Color
 import org.typelevel.sbt.TypelevelGitHubPlugin
@@ -39,55 +42,49 @@ object CirceOrgSitePlugin extends AutoPlugin {
   import TypelevelSitePlugin.autoImport._
   import LaikaPlugin.autoImport._
 
-  override def projectSettings: Seq[Setting[_]] = Seq(
-    tlSiteRelatedProjects := {
-      Seq(
-        "circe" -> url("https://github.com/circe/circe"),
-        // streaming helpers
-        "circe-fs2" -> url("https://github.com/circe/circe-fs2"),
-        "circe-iteratee" -> url("https://github.com/circe/circe-iteratee"),
-        // derivation helpers
-        "circe-generic-extras" -> url("https://github.com/circe/circe-generic-extras"),
-        "circe-derivation" -> url("https://github.com/circe/circe-derivation"),
-        // end-user utils
-        "circe-optics" -> url("https://github.com/circe/circe-optics"),
-        // 3rd-party integrations
-        "circe-droste" -> url("https://github.com/circe/circe-droste"),
-        "circe-spire" -> url("https://github.com/circe/circe-spire"),
-        "circe-config" -> url("https://github.com/circe/circe-config"),
-        // other formats
-        "circe-yaml" -> url("https://github.com/circe/circe-yaml"),
-        "circe-bson" -> url("https://github.com/circe/circe-bson"),
-        // schemas
-        "circe-schema" -> url("https://github.com/circe/circe-schema"),
-        "circe-golden" -> url("https://github.com/circe/circe-golden"),
-        "circe-json-schema" -> url("https://github.com/circe/circe-json-schema"),
-        // other backends
-        "circe-jackson" -> url("https://github.com/circe/circe-jackson"),
-        "circe-argus" -> url("https://github.com/circe/circe-argus")
-      ).filterNot {
-        case (repo, _) =>
-          tlGitHubRepo.value.contains(repo) // omit ourselves!
-      }
-    },
-    laikaTheme ~= { _.extend(site.CirceOrgHeliumExtensions) },
-    tlSiteHeliumConfig := {
-      Helium.defaults.all
-        .metadata(
-          title = tlGitHubRepo.value,
-          authors = developers.value.map(_.name),
-          language = Some("en"),
-          version = Some(version.value)
-        )
-        .site
-        .layout(
-          contentWidth = px(860),
-          navigationWidth = px(275),
-          topBarHeight = px(35),
-          defaultBlockSpacing = px(10),
-          defaultLineHeight = 1.5,
-          anchorPlacement = laika.helium.config.AnchorPlacement.Right
-        )
+  private val relatedProjects: Def.Initialize[ThemeNavigationSection] = Def.setting {
+    val mappings = List(
+      "circe" -> url("https://github.com/circe/circe"),
+      // streaming helpers
+      "circe-fs2" -> url("https://github.com/circe/circe-fs2"),
+      "circe-iteratee" -> url("https://github.com/circe/circe-iteratee"),
+      // derivation helpers
+      "circe-generic-extras" -> url("https://github.com/circe/circe-generic-extras"),
+      "circe-derivation" -> url("https://github.com/circe/circe-derivation"),
+      // end-user utils
+      "circe-optics" -> url("https://github.com/circe/circe-optics"),
+      // 3rd-party integrations
+      "circe-droste" -> url("https://github.com/circe/circe-droste"),
+      "circe-spire" -> url("https://github.com/circe/circe-spire"),
+      "circe-config" -> url("https://github.com/circe/circe-config"),
+      // other formats
+      "circe-yaml" -> url("https://github.com/circe/circe-yaml"),
+      "circe-bson" -> url("https://github.com/circe/circe-bson"),
+      // schemas
+      "circe-schema" -> url("https://github.com/circe/circe-schema"),
+      "circe-golden" -> url("https://github.com/circe/circe-golden"),
+      "circe-json-schema" -> url("https://github.com/circe/circe-json-schema"),
+      // other backends
+      "circe-jackson" -> url("https://github.com/circe/circe-jackson"),
+      "circe-argus" -> url("https://github.com/circe/circe-argus")
+    ).filterNot {
+      case (repo, _) =>
+        tlGitHubRepo.value.contains(repo) // omit ourselves!
+    }.map {
+      case (name, url) =>
+        TextLink.external(url.toString, name)
+    }
+
+    ThemeNavigationSection(
+      "Related Projects",
+      NonEmptyList.fromListUnsafe(mappings)
+    )
+  }
+
+  override lazy val projectSettings = Seq(
+    tlSiteHelium := {
+      tlSiteHelium.value
+        .extendWith(site.CirceOrgHeliumExtensions)
         .site
         /* See scaladoc on laika.helium.config.CommonConfigOps#themeColors()
          * old circe website color theme reference point:
@@ -110,23 +107,14 @@ object CirceOrgSitePlugin extends AutoPlugin {
         .darkMode
         .disabled
         .site
+        .mainNavigation(appendLinks = Seq(relatedProjects.value))
+        .site
         .topNavigationBar(
           homeLink = ImageLink.external(
             "https://github.com/circe/circe",
             Image.internal(Root / "images" / "circe_light_no_border_146x173.png")
           ),
-          navLinks = tlSiteApiUrl.value.toList.map { url =>
-            IconLink.external(
-              url.toString,
-              HeliumIcon.api,
-              options = Styles("svg-link")
-            )
-          } ++ Seq(
-            IconLink.external(
-              scmInfo.value.fold("https://github.com/circe")(_.browseUrl.toString),
-              HeliumIcon.github,
-              options = Styles("svg-link")
-            ),
+          navLinks = Seq(
             IconLink.external("https://discord.gg/XF3CXcMzqD", HeliumIcon.chat)
           )
         )

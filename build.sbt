@@ -5,12 +5,7 @@ lazy val `sbt-circe-org` =
 ThisBuild / circeRootOfCodeCoverage := None
 ThisBuild / tlCiScalafixCheck := true
 
-lazy val docs = project
-  .in(file("site"))
-  .enablePlugins(CirceOrgSitePlugin)
-  .settings(
-    tlSiteRelatedProjects += "sbt-typelevel" -> url("https://typelevel.org/sbt-typelevel/")
-  )
+lazy val docs = project.in(file("site")).enablePlugins(CirceOrgSitePlugin)
 
 lazy val core = project
   .in(file("core"))
@@ -19,7 +14,7 @@ lazy val core = project
     name := "sbt-circe-org"
   )
 
-ThisBuild / tlBaseVersion := "0.1"
+ThisBuild / tlBaseVersion := "0.2"
 ThisBuild / crossScalaVersions := Seq("2.12.18")
 ThisBuild / developers := List(
   tlGitHubDev("lorandszakacs", "Loránd Szakács")
