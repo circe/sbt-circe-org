@@ -17,10 +17,8 @@
 package io.circe.sbt
 
 import cats.data.NonEmptyList
-import laika.ast.LengthUnit._
 import laika.ast.Path.Root
 import laika.ast._
-import laika.helium.Helium
 import laika.helium.config.Favicon
 import laika.helium.config.HeliumIcon
 import laika.helium.config.IconLink
@@ -31,7 +29,6 @@ import laika.sbt.LaikaPlugin
 import laika.theme.config.Color
 import org.typelevel.sbt.TypelevelGitHubPlugin
 import org.typelevel.sbt.TypelevelSitePlugin
-import sbt.Keys._
 import sbt._
 
 object CirceOrgSitePlugin extends AutoPlugin {
@@ -40,7 +37,6 @@ object CirceOrgSitePlugin extends AutoPlugin {
 
   import TypelevelGitHubPlugin.autoImport._
   import TypelevelSitePlugin.autoImport._
-  import LaikaPlugin.autoImport._
 
   private val relatedProjects: Def.Initialize[ThemeNavigationSection] = Def.setting {
     val mappings = List(
