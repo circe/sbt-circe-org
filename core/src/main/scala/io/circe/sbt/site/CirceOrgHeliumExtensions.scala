@@ -39,7 +39,7 @@ object CirceOrgHeliumExtensions extends ThemeProvider {
         inputTree.addClassResource[this.type](s"images/$fileName", Path.Root / "images" / fileName)
     }
 
-    ThemeBuilder[F]("http4s Images").addInputs(inputs).build
+    ThemeBuilder[F]("circe Images").addInputs(inputs).build
   }
 
 }
