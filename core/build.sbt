@@ -1,4 +1,4 @@
-val sbtTypelevelVersion = "0.4.22" // https://github.com/typelevel/sbt-typelevel/releases
+val sbtTypelevelVersion = "0.5.0" // https://github.com/typelevel/sbt-typelevel/releases
 val sbtScoverageVersion = "2.0.8" // https://github.com/scoverage/sbt-scoverage/releases
 val sbtScalaNativeVersion = "0.4.12" // https://github.com/scala-native/scala-native/releases
 
