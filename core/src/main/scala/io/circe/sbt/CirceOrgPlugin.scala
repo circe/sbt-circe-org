@@ -78,7 +78,7 @@ object CirceOrgPlugin extends AutoPlugin {
             WorkflowJob(
               id = "coverage",
               name = "Generate coverage report",
-              scalas = crossScalaVersions.value.filterNot(_.startsWith("3.")).toList,
+              scalas = githubWorkflowScalaVersions.value.toList,
               steps = List(WorkflowStep.Checkout) ++ WorkflowStep.SetupJava(
                 List(githubWorkflowJavaVersions.value.last)
               ) ++ githubWorkflowGeneratedCacheSteps.value ++ List(
