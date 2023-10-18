@@ -73,7 +73,8 @@ object CirceOrgSitePlugin extends AutoPlugin {
 
     ThemeNavigationSection(
       "Related Projects",
-      NonEmptyList.fromListUnsafe(mappings)
+      mappings.head,
+      mappings.tail *
     )
   }
 
