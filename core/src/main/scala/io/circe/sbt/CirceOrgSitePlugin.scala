@@ -16,7 +16,6 @@
 
 package io.circe.sbt
 
-import cats.data.NonEmptyList
 import laika.ast.Path.Root
 import laika.ast._
 import laika.helium.config.Favicon
@@ -73,7 +72,8 @@ object CirceOrgSitePlugin extends AutoPlugin {
 
     ThemeNavigationSection(
       "Related Projects",
-      NonEmptyList.fromListUnsafe(mappings)
+      mappings.head,
+      mappings.tail *
     )
   }
 
