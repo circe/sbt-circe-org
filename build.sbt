@@ -14,7 +14,7 @@ lazy val core = project
     name := "sbt-circe-org"
   )
 
-ThisBuild / tlBaseVersion := "0.3"
+ThisBuild / tlBaseVersion := "0.4"
 ThisBuild / crossScalaVersions := Seq("2.12.19")
 ThisBuild / developers := List(
   tlGitHubDev("lorandszakacs", "Loránd Szakács")
