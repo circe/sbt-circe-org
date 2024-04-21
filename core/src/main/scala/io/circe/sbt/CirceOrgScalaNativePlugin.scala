@@ -19,7 +19,7 @@ package io.circe.sbt
 /**
  * automatically loaded for all projects that are cross-compiled to ScalaNative, no need too reference it explicitly in builds
  */
-import sbt.*
+import sbt._
 import scoverage.ScoverageSbtPlugin.autoImport._
 
 import scala.scalanative.sbtplugin.ScalaNativePlugin

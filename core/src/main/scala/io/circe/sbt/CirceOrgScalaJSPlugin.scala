@@ -21,7 +21,7 @@ package io.circe.sbt
  */
 
 import org.scalajs.sbtplugin.ScalaJSPlugin
-import sbt.*
+import sbt._
 import scoverage.ScoverageSbtPlugin.autoImport._
 
 object CirceOrgScalaJSPlugin extends AutoPlugin {
