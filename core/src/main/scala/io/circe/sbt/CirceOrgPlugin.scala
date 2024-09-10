@@ -27,7 +27,7 @@ import scoverage._
 import GenerativeKeys._
 import TypelevelSettingsPlugin.autoImport._
 import TypelevelCiPlugin.autoImport._
-import TypelevelSonatypePlugin.autoImport._
+import xerial.sbt.Sonatype.autoImport._
 
 object CirceOrgPlugin extends AutoPlugin {
   object autoImport {
@@ -55,7 +55,7 @@ object CirceOrgPlugin extends AutoPlugin {
 
   lazy val publishSettings: Seq[Setting[_]] =
     Seq(
-      tlSonatypeUseLegacyHost := true,
+      sonatypeCredentialHost := xerial.sbt.Sonatype.sonatypeLegacy,
       tlJdkRelease := Some(8)
     )
 
