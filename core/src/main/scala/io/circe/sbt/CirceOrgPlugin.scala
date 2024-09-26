@@ -23,11 +23,11 @@ import sbt._
 import scalafix.sbt.ScalafixPlugin.autoImport._
 import scoverage.ScoverageSbtPlugin.autoImport._
 import scoverage._
+import xerial.sbt.Sonatype.autoImport._
 
 import GenerativeKeys._
 import TypelevelSettingsPlugin.autoImport._
 import TypelevelCiPlugin.autoImport._
-import xerial.sbt.Sonatype.autoImport._
 
 object CirceOrgPlugin extends AutoPlugin {
   object autoImport {
