@@ -79,7 +79,13 @@ object CirceOrgPlugin extends AutoPlugin {
               id = "coverage",
               name = "Generate coverage report",
               scalas = githubWorkflowScalaVersions.value.toList,
-              steps = List(WorkflowStep.Checkout) ++ WorkflowStep.SetupJava(
+              steps = List(
+                WorkflowStep.Use(
+                  UseRef.Public("sbt", "setup-sbt", "v1"),
+                  name = Some("Install sbt")
+                ),
+                WorkflowStep.Checkout
+              ) ++ WorkflowStep.SetupJava(
                 List(githubWorkflowJavaVersions.value.last)
               ) ++ githubWorkflowGeneratedCacheSteps.value ++ List(
                 WorkflowStep.Sbt(List("coverage", s"$rootProj/test", "coverageAggregate")),
