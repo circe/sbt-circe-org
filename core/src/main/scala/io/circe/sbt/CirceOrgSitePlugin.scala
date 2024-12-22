@@ -122,8 +122,8 @@ object CirceOrgSitePlugin extends AutoPlugin {
         .syntaxHighlightingColors(
           ColorQuintet(
             // format: off
-            Color.hex("292933"), // #292933
-            Color.hex("737380"), // #737380
+            Color.hex("23232E"), // #23232E
+            Color.hex("BABACF"), // #BABACF
             Color.hex("6B6BB5"), // #6B6BB5
             Color.hex("E6E6FF"), // #E6E6FF
             Color.hex("F2F2FF")  // #F2F2FF
@@ -135,7 +135,7 @@ object CirceOrgSitePlugin extends AutoPlugin {
             Color.hex("FFAD54"), // #FFAD54
             Color.hex("FFE957"), // #FFE957
             Color.hex("7EE6B4"), // #7EE6B4
-            Color.hex("6D57FF")  // #6D57FF
+            Color.hex("968CFF")  // #968CFF
             // format: on
           )
         )
