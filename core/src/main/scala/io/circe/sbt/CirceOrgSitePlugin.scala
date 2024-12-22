@@ -18,6 +18,7 @@ package io.circe.sbt
 
 import laika.ast.Path.Root
 import laika.ast._
+import laika.helium.config.ColorQuintet
 import laika.helium.config.Favicon
 import laika.helium.config.HeliumIcon
 import laika.helium.config.IconLink
@@ -101,7 +102,43 @@ object CirceOrgSitePlugin extends AutoPlugin {
         )
         .site
         .darkMode
-        .disabled
+        // format: off
+        .themeColors(
+          primary       = Color.hex("A6A6FF"), // #A6A6FF
+          secondary     = Color.hex("DDD9FF"), // #DDD9FF
+          primaryMedium = Color.hex("8A8AD4"), // #8A8AD4
+          primaryLight  = Color.hex("2F2F47"), // #2F2F47
+          text          = Color.hex("D2E3FA"), // #D2E3FA
+          background    = Color.hex("10101C"), // #10101C
+          // gradient not used in current configuraiton
+          bgGradient = (
+            Color.hex("F4F3F4"),
+            Color.hex("E5E5E6")
+          )
+        )
+        // format: on
+        .site
+        .darkMode
+        .syntaxHighlightingColors(
+          ColorQuintet(
+            // format: off
+            Color.hex("292933"), // #292933
+            Color.hex("737380"), // #737380
+            Color.hex("6B6BB5"), // #6B6BB5
+            Color.hex("E6E6FF"), // #E6E6FF
+            Color.hex("F2F2FF")  // #F2F2FF
+            // format: on
+          ),
+          ColorQuintet(
+            // format: off
+            Color.hex("FF6B57"), // #FF6B57
+            Color.hex("FFAD54"), // #FFAD54
+            Color.hex("FFE957"), // #FFE957
+            Color.hex("7EE6B4"), // #7EE6B4
+            Color.hex("6D57FF")  // #6D57FF
+            // format: on
+          )
+        )
         .site
         .mainNavigation(appendLinks = Seq(relatedProjects.value))
         .site
