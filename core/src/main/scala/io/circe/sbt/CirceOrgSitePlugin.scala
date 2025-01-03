@@ -85,16 +85,26 @@ object CirceOrgSitePlugin extends AutoPlugin {
         /* See scaladoc on laika.helium.config.CommonConfigOps#themeColors()
          * old circe website color theme reference point:
          * https://github.com/circe/circe/blob/c666f32f3bd02644a927b624f7534fdeccbd62a6/build.sbt#L151
+         *
+         * The inline comments are because many editors recognize hex colors
+         * in the #4a4a4a format, so you should be able to see them at a glance.
+         *
          */
+        // format: off
         .themeColors(
-          primary = Color.hex("222749"),
-          secondary = Color.hex("222749"),
-          primaryMedium = Color.hex("292E53"),
-          primaryLight = Color.hex("5B5988"),
-          text = Color.hex("5f5f5f"),
-          background = Color.hex("F4F3F4"),
-          bgGradient = (Color.hex("F4F3F4"), Color.hex("E5E5E6"))
+          primary       = Color.hex("34324D"), // #34324D
+          secondary     = Color.hex("262D52"), // #262D52
+          primaryMedium = Color.hex("8F8BD5"), // #8F8BD5
+          primaryLight  = Color.hex("A29DF2"), // #A29DF2
+          text          = Color.hex("4a4a4a"), // #4a4a4a
+          background    = Color.hex("F8F5FF"), // #F8F5FF
+          // gradient not used in current configuraiton
+          bgGradient = (
+            Color.hex("F4F3F4"),
+            Color.hex("E5E5E6")
+          )
         )
+        // format: on
         .site
         .favIcons(
           Favicon.internal(Root / "images" / "circe_light_no_border_146x173.png", "32x32")
@@ -108,7 +118,7 @@ object CirceOrgSitePlugin extends AutoPlugin {
         .topNavigationBar(
           homeLink = ImageLink.external(
             "https://github.com/circe/circe",
-            Image.internal(Root / "images" / "circe_light_no_border_146x173.png")
+            Image.internal(Root / "images" / "circe_light_no_border_146x173.png", alt = Some("circe logo"))
           ),
           navLinks = Seq(
             IconLink.external("https://discord.gg/XF3CXcMzqD", HeliumIcon.chat)
