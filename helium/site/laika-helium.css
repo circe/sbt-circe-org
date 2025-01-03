@@ -1,10 +1,10 @@
 :root {
-  --primary-color: #222749;
-  --primary-light: #5B5988;
-  --primary-medium: #292E53;
-  --secondary-color: #222749;
-  --text-color: #5f5f5f;
-  --bg-color: #F4F3F4;
+  --primary-color: #34324D;
+  --primary-light: #A29DF2;
+  --primary-medium: #8F8BD5;
+  --secondary-color: #262D52;
+  --text-color: #4a4a4a;
+  --bg-color: #F8F5FF;
   --gradient-top: #F4F3F4;
   --gradient-bottom: #E5E5E6;
   --component-color: var(--primary-color);
