@@ -55,7 +55,7 @@ object CirceOrgPlugin extends AutoPlugin {
 
   lazy val publishSettings: Seq[Setting[_]] =
     Seq(
-      sonatypeCredentialHost := xerial.sbt.Sonatype.sonatypeLegacy,
+      sonatypeCredentialHost := xerial.sbt.Sonatype.sonatypeCentralHost,
       tlJdkRelease := Some(8)
     )
 
