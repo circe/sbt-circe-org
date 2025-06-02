@@ -72,7 +72,7 @@ object CirceOrgPlugin extends AutoPlugin {
     tlCiScalafmtCheck := true,
     githubWorkflowAddedJobs ++=
       (circeRootOfCodeCoverage.value match {
-        case None => List.empty
+        case None           => List.empty
         case Some(rootProj) =>
           List(
             WorkflowJob(
