@@ -23,7 +23,6 @@ import sbt._
 import scalafix.sbt.ScalafixPlugin.autoImport._
 import scoverage.ScoverageSbtPlugin.autoImport._
 import scoverage._
-import xerial.sbt.Sonatype.autoImport._
 
 import GenerativeKeys._
 import TypelevelSettingsPlugin.autoImport._
@@ -55,7 +54,6 @@ object CirceOrgPlugin extends AutoPlugin {
 
   lazy val publishSettings: Seq[Setting[_]] =
     Seq(
-      sonatypeCredentialHost := xerial.sbt.Sonatype.sonatypeCentralHost,
       tlJdkRelease := Some(8)
     )
 
