@@ -4,7 +4,6 @@ lazy val `sbt-circe-org` =
 // we're not doing code coverage on this plugin. Set to Some("sbt-circe-org") if you wish to run it.
 ThisBuild / circeRootOfCodeCoverage := None
 ThisBuild / tlCiScalafixCheck := true
-ThisBuild / sbtPluginPublishLegacyMavenStyle := false
 
 lazy val docs = project.in(file("site")).enablePlugins(CirceOrgSitePlugin)
 
