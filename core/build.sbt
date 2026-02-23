@@ -1,4 +1,4 @@
-val sbtTypelevelVersion = "0.8.4" // https://github.com/typelevel/sbt-typelevel/releases
+val sbtTypelevelVersion = "0.8.5" // https://github.com/typelevel/sbt-typelevel/releases
 val sbtScoverageVersion = "2.4.4" // https://github.com/scoverage/sbt-scoverage/releases
 
 addSbtPlugin("org.typelevel" % "sbt-typelevel" % sbtTypelevelVersion)
