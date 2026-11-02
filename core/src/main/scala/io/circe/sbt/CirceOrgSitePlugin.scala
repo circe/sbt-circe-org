@@ -158,6 +158,10 @@ object CirceOrgSitePlugin extends AutoPlugin {
             Image.internal(Root / "images" / "circe_light_no_border_146x173.png", alt = Some("circe logo"))
           ),
           navLinks = Seq(
+            IconLink.external(
+              "https://circe.github.io/circe/api/io/circe",
+              HeliumIcon.api
+            ),
             IconLink.external("https://discord.gg/XF3CXcMzqD", HeliumIcon.chat)
           )
         )
